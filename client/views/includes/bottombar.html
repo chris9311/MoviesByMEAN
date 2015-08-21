@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">科幻</a>
+            <p class="navbar-text navbar-right" ng-show="user">
+                <span>欢迎您,{{user.name}}</span>
+                &nbsp;&nbsp;&nbsp;
+                <a class="navbar-link" href="/user/logout">登出</a>
+            </p>
+
+            <p class="navbar-text navbar-right" ng-hide="user">
+                <a href="" data-toggle="modal" data-target="#signupModal" class="navbar-link">注册</a>
+                <span>&nbsp;|&nbsp;</span>
+                <a href="" data-toggle="modal" data-target="#signinModal" class="navbar-link">登录</a>
+            </p>
+        </div>
+    </div>
+</nav>

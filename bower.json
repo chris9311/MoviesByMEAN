@@ -1,0 +1,23 @@
+{
+  "name": "movies",
+  "version": "0.0.2",
+  "authors": [
+    "Chris Huang"
+  ],
+  "description": "this is mivies website by MEAN",
+  "keywords": [
+    "movies"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}

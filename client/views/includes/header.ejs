@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="page-header clearfix">
+
+
+            <div class="col-sm-8">
+                <h1>
+                    {{title}}
+                </h1>
+            </div>
+            <div class="col-sm-4" >
+                <form >
+                    <label for="search">站内搜索：</label>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="search" ng-model="keyword">
+                        <span class="input-group-btn">
+                            <a href="#/movie/result/{{keyword}}/1" class="btn btn-default" type="button" ng-click="submit">
+                                搜索
+                            </a>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<% include topbar.html%>
+<% include signinmodal.html%>
+<% include signupmodal.html%>
+<% include bottombar.html%>
+

@@ -1,0 +1,101 @@
+<div class="container" ng-controller="movie_detalController">
+    <div class="row">
+        <div class="col-md-7">
+            <!--<param name="wmode" value="Opaque">-->
+            <embed src="http://player.youku.com/player.php/sid/XNJA1Njc0NTUy/v.swf" allowFullScreen="true"
+                   quality="high" width="720" height="600" align="middle" type="application/x-shockwave-flash"
+                   wmode="Opaque">
+                <hr/>
+                <div class="panel panel-default" ng-controller="commentController">
+                    <div class="panel-heading">
+                        <h3>评论区</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="media-list">
+                            <li class="media" ng-repeat="item in comments">
+                                <div class="pull-left">
+                                    <!--<a href="" data-toggle="modal" data-target="#signinModal" class="navbar-link">登录</a>-->
+                                    <a class="comment" href=""
+                                       data-toggle="modal" data-target="#commentModal" ng-click="replyComment(item.from._id,item._id)">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+"
+                                             , style="width: 64px; height: 64px;">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{item.from.name}}</h4>
+
+                                    <p>{{item.content}}</p>
+
+                                    <div ng-show="item.reply && item.reply.length > 0">
+                                        <div class="media" ng-repeat="reply in item.reply">
+                                            <div class="pull-left">
+                                                <a class="comment" href="" data-toggle="modal" data-target="#commentModal" ng-click="replyComment(item.from._id,item._id)">
+                                                    <img class="media-object" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+", style="width: 64px; height: 64px;">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">
+                                                    {{reply.from.name}}
+                                                    <span class="text-info">&nbsp;回复&nbsp;</span>
+                                                    {{reply.to.name}}
+                                                </h4>
+
+                                                <p>{{reply.content}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </li>
+                        </ul>
+                        <button ng-show="user" class="btn btn-primary" type="button" data-toggle="modal"
+                                data-target="#commentModal" ng-click="comment()"> 评论
+                        </button>
+                        <a ng-hide="user" class="navbar-link" href="" data-toggle="modal" data-target="#signinModal">登录后评论</a>
+                        <div class="modal fade" id="commentModal" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form method="POST">
+                                        <div class="modal-header">
+                                            <span class="text-info">评论</span>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                    aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="hidden" ng-model="comment.tid" >
+                                            <input type="hidden" ng-model="comment.cid" >
+                                            <textarea class="form-control" rows="3" ng-model="comment.content"
+                                                      style="resize: none;"></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-primary" type="button" ng-click="submit()"> 提交</button>
+                                            <button class="btn btn-default" type="button" data-dismiss="modal">关闭</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="col-md-5">
+            <dl class="dl-horizontal">
+                <dt>电影名字</dt>
+                <dd>{{movie.title}}</dd>
+                <dt>导演</dt>
+                <dd>{{movie.doctor}}</dd>
+                <dt>国家</dt>
+                <dd>{{movie.country}}</dd>
+                <dt>语言</dt>
+                <dd>{{movie.language}}</dd>
+                <dt>上映年份</dt>
+                <dd>{{movie.year}}</dd>
+                <dt>简介</dt>
+                <dd>{{movie.summary}}</dd>
+                <dt>类别</dt>
+                <dd>{{movie.category.name}}</dd>
+            </dl>
+        </div>
+    </div>
+</div>

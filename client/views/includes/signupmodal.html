@@ -1,0 +1,27 @@
+<div class="modal fade" id="signupModal" role="dialog" aria-labelledby="myModalLabel" ng-controller="user_signupController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="/user/signup">
+                <div class="modal-header">
+                    注册
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="signupName">用户名</label>
+                        <input class="form-control" id="signupName" ng-model="user.name" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">密码</label>
+                        <input class="form-control" id="signupPassword" ng-model="user.password" type="password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal" >关闭</button>
+                    <button class="btn btn-success" type="button" ng-click="submit()" >提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

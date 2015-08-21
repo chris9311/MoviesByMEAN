@@ -1,0 +1,27 @@
+<div class="container" ng-controller="category_movieController">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    {{title}}
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-2" ng-repeat="item in movies" style="height:420px">
+                    <div class="thumbnail" style="height:410px;width: 160px">
+                        <a href="#/movie/detal/{{item._id}}">
+                            <img src={{item.poster}} alt="{{item.title}}">
+                        </a>
+                        <div class="caption">
+                            <h2>{{item.title}}</h2>
+                            <p><a href="#/movie/detal/{{item._id}}}" role="button" class="btn btn-primary">观看预告片</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer ">
+                <pagination itemsList=movies pagesize="4" url="#/category/movies" url-att1="categoryid"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
